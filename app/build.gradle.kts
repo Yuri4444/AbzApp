@@ -1,16 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
     namespace = "com.yuri_berezhnyi.abzapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.yuri_berezhnyi.abzapp"
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -26,12 +28,16 @@ android {
             )
         }
     }
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -45,4 +51,29 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    //Hilt
+    implementation(libs.android.hilt)
+    ksp(libs.android.hilt.compiler)
+    ksp(libs.dagger.compiler)
+
+    //Coroutine
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+
+    //Navigation component
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    //ViewModel
+    implementation(libs.androidx.fragment.ktx)
+
+    //Glide
+    implementation(libs.glide)
+
+    // Retrofit
+    implementation(libs.bundles.networking)
+
+    //Paging
+    implementation(libs.androidx.paging.runtime.ktx)
 }
