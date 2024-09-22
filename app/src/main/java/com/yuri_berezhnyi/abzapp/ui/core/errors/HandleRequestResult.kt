@@ -64,6 +64,7 @@ interface HandleRequestResult {
                 } else {
                     val code = response.code()
                     if (code == 401) {
+                        onFailure.invoke()
                         Result.failure(UiException.Unauthorized)
                     } else if (onFailureWithCode == null) {
                         onFailure.invoke()

@@ -28,16 +28,12 @@
     </fragment>
     <fragment
         android:id="@+id/successFragment"
-        android:name="com.yuri_berezhnyi.abzapp.ui.result.SuccessFragment"
+        android:name="com.yuri_berezhnyi.abzapp.ui.result.success.SuccessFragment"
         android:label="fragment_success"
-        tools:layout="@layout/fragment_success" >
-        <action
-            android:id="@+id/action_successFragment_to_usersFragment"
-            app:destination="@id/usersFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_success" />
     <fragment
         android:id="@+id/failureFragment"
-        android:name="com.yuri_berezhnyi.abzapp.ui.result.FailureFragment"
+        android:name="com.yuri_berezhnyi.abzapp.ui.result.failure.FailureFragment"
         android:label="fragment_failture"
         tools:layout="@layout/fragment_failture" />
     <fragment

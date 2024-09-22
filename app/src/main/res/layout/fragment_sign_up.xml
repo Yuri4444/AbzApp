@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.yuri_berezhnyi.abzapp.ui.signUp.SignUpFragment">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_0"
         android:orientation="vertical"
@@ -20,13 +20,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.yuri_berezhnyi.abzapp.ui.utils.customeView.CustomEditText
                 android:id="@+id/etYourName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_24"
-                android:background="@drawable/bg_search"
                 android:ellipsize="end"
                 android:hint="@string/your_name"
                 android:padding="@dimen/margin_16"
@@ -48,15 +47,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/etYourName"
                 tools:visibility="visible" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.yuri_berezhnyi.abzapp.ui.utils.customeView.CustomEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_16"
-                android:background="@drawable/bg_search"
+                android:background="@drawable/bg_edit"
                 android:ellipsize="end"
                 android:hint="@string/email"
+                android:inputType="textEmailAddress"
                 android:padding="@dimen/margin_16"
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="@+id/etYourName"
@@ -76,15 +76,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/etEmail"
                 tools:visibility="visible" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.yuri_berezhnyi.abzapp.ui.utils.customeView.CustomEditText
                 android:id="@+id/etPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_16"
-                android:background="@drawable/bg_search"
+                android:background="@drawable/bg_edit"
                 android:ellipsize="end"
                 android:hint="@string/phone"
+                android:inputType="phone"
                 android:padding="@dimen/margin_16"
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="@+id/etEmail"
@@ -124,61 +125,32 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_18" />
 
-            <RadioButton
-                android:id="@+id/rbFrontend"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPositions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_32"
-                android:layout_marginTop="@dimen/margin_16"
-                android:padding="@dimen/margin_8"
-                android:text="@string/frontend_developer"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_16" />
-
-            <RadioButton
-                android:id="@+id/rbBackend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_32"
-                android:padding="@dimen/margin_8"
-                android:text="@string/backend_developer"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_16" />
-
-            <RadioButton
-                android:id="@+id/rbDesigner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_32"
-                android:padding="@dimen/margin_8"
-                android:text="@string/designer"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_16" />
-
-            <RadioButton
-                android:id="@+id/rbQa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/margin_32"
-                android:padding="@dimen/margin_8"
-                android:text="@string/qa"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_16" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_position" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/llUploadYourPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_16"
-                android:background="@drawable/bg_search"
+                android:layout_marginHorizontal="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_16"
+                android:background="@drawable/bg_edit"
                 android:orientation="horizontal"
                 android:padding="@dimen/margin_16">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvImageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/margin_16"
                     android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="@string/upload_your_photo"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/text_18" />
@@ -193,9 +165,19 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPhotoError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_32"
+                android:text="@string/photo_is_required"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                tools:visibility="visible" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSignUp"

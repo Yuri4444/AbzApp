@@ -1,6 +1,7 @@
 package com.yuri_berezhnyi.abzapp.data.cloud
 
 import com.google.gson.annotations.SerializedName
+import java.io.File
 
 data class UserRequest(
     @SerializedName("name")
@@ -12,5 +13,5 @@ data class UserRequest(
     @SerializedName("position_id")
     val positionId: Int,
     @SerializedName("photo")
-    val photo: Int
+    val photo: File
 )

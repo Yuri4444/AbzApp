@@ -1,11 +1,16 @@
 package com.yuri_berezhnyi.abzapp.domain
 
-import androidx.paging.PagingData
+import com.yuri_berezhnyi.abzapp.data.cloud.RegisterUserResponse
+import com.yuri_berezhnyi.abzapp.data.cloud.TokenResponse
+import com.yuri_berezhnyi.abzapp.data.cloud.UserRequest
+import com.yuri_berezhnyi.abzapp.ui.users.PositionUI
 import com.yuri_berezhnyi.abzapp.ui.users.UserUi
-import kotlinx.coroutines.flow.Flow
 
 interface UsersRepository {
 
-    fun pagedUsers(): Flow<PagingData<UserUi>>
+    suspend fun pagedUsers(page: Int, count: Int): List<UserUi>?
+    suspend fun token(): Result<TokenResponse>
+    suspend fun registerUser(userRequest: UserRequest): Result<RegisterUserResponse>
+    suspend fun positions(): Result<List<PositionUI>>
 
 }

@@ -2,6 +2,7 @@ package com.yuri_berezhnyi.abzapp.di
 
 import com.yuri_berezhnyi.abzapp.ui.core.CoroutineDispatchers
 import com.yuri_berezhnyi.abzapp.ui.core.errors.HandlePagingResult
+import com.yuri_berezhnyi.abzapp.ui.core.errors.HandleRequestResult
 import com.yuri_berezhnyi.abzapp.ui.core.ui.NavigationCommand
 import com.yuri_berezhnyi.abzapp.ui.core.ui.NavigationStrategy
 import com.yuri_berezhnyi.abzapp.ui.core.ui.SimpleUiTarget
@@ -34,5 +35,9 @@ object CoreModule {
     @Provides
     @Singleton
     fun provideHandlePaginationResult(): HandlePagingResult = HandlePagingResult.Main()
+
+    @Provides
+    @Singleton
+    fun provideHandleResult(): HandleRequestResult = HandleRequestResult.Main()
 
 }

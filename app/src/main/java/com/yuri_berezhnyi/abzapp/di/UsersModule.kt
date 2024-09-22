@@ -5,6 +5,7 @@ import com.yuri_berezhnyi.abzapp.data.UsersRepositoryImpl
 import com.yuri_berezhnyi.abzapp.data.api.UsersApi
 import com.yuri_berezhnyi.abzapp.domain.UsersRepository
 import com.yuri_berezhnyi.abzapp.ui.core.errors.HandlePagingResult
+import com.yuri_berezhnyi.abzapp.ui.core.errors.HandleRequestResult
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,9 +27,9 @@ object UsersModule {
     @Provides
     fun provideUserRepository(
         usersApi: UsersApi,
-        handlePagingResult: HandlePagingResult
+        handleRequestResult: HandleRequestResult
     ): UsersRepository = UsersRepositoryImpl(
         usersApi = usersApi,
-        handlePagingResult = handlePagingResult
+        handleRequestResult = handleRequestResult
     )
 }

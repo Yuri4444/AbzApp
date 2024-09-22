@@ -22,4 +22,11 @@
     <string name="upload_your_photo">Upload your photo</string>
     <string name="upload">Upload</string>
     <string name="try_again_later">Try again later</string>
+    <string name="photo_is_required">Photo is required</string>
+    <string name="choose_how_you_want_to_add_a_photo">Choose how you want to add a photo</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="permissions_not_granted">Permissions not granted</string>
+    <string name="your_photo">Your photo</string>
+    <string name="image_selected">Image selected</string>
 </resources>
